@@ -1,4 +1,5 @@
 # NovemberPuzzle
+http://powershell.org/wp/2015/11/07/november-2015-scripting-games-puzzle
 
 Our Puzzle
 
