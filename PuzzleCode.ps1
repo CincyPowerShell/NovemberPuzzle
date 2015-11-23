@@ -1,5 +1,18 @@
-param ([string]$VMNameStr)
-# The input is assumed to be one or more computer names in a single string
-# using a comma delimiter. We can do the same thing in very little code using
-# string instance methods.
-$VMNameStr.Split(',').Trim()
+param([string]$VMNameStr)
+$VMs=@()
+$VMNames=@()
+if($VMNameStr.indexof(",") -gt 0)
+{
+$Trace="Found Comma..."
+$VMs=$VMNameStr -split "," | %{$_.trim()}
+$trace+="Length = $($VMs.length)"
+$trace+=$VMs -is [array]
+for($i=0;$i -lt $VMs.length;$i++){
+if($VMs[$i] -gt ""){
+set-variable -Name ("vmname" + $i) -value $VMs[$i]
+$VMNames+=$VMs[$i]
+}
+}
+}
+else{$VMName0=$VMNameStr;$VMNames=$VMName0}
+$VMNames
